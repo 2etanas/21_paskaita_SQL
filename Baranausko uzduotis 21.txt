@@ -1,0 +1,58 @@
+
+Pirmas:
+SELECT DISTINCT u.name, u.surname, r.name
+FROM `users` u 
+INNER JOIN `user_roles_permissions` urp ON u.id = urp.user_id
+INNER JOIN `roles` r ON urp.role_id = r.id
+
+
+Antras:
+SELECT permissions.name AS permission_name, roles.name AS role_name
+FROM user_roles_permissions
+INNER JOIN roles ON user_roles_permissions.role_id = roles.id
+INNER JOIN `permissions` ON user_roles_permissions.permission_id = permissions.id
+
+
+Trečias:
+SELECT `users`.name, `users`.`surname`, permissions.name AS permissions_name
+FROM users
+INNER JOIN user_roles_permissions ON users.id = user_roles_permissions.user_id
+INNER JOIN permissions ON permissions.id = user_roles_permissions.permission_id 
+
+
+
+Ketvirtas:
+
+SELECT users.name, users.surname, permissions.name AS permission_name, roles.name AS role_name
+FROM users
+INNER JOIN user_roles_permissions ON users.id = user_roles_permissions.user_id
+INNER JOIN permissions ON permissions.id = user_roles_permissions.permission_id
+INNER JOIN roles ON roles.id = user_roles_permissions.role_id
+
+Penktas:
+
+SELECT users.*, roles.*, permissions.*
+FROM users
+INNER JOIN user_roles_permissions ON users.id = user_roles_permissions.user_id
+INNER JOIN permissions ON permissions.id = user_roles_permissions.permission_id
+INNER JOIN roles ON roles.id = user_roles_permissions.role_id
+
+
+Šeštas:
+
+SELECT users.name, users.surname, permissions.name AS permission_name, roles.name AS role_name
+FROM users
+INNER JOIN user_roles_permissions ON users.id = user_roles_permissions.user_id
+INNER JOIN permissions ON permissions.id = user_roles_permissions.permission_id
+INNER join roles ON roles.id = user_roles_permissions.role_id
+WHERE users.id = 3
+
+Septintas:
+SELECT users.name, users.surname, permissions.name AS permission_name
+FROM users
+LEFT JOIN user_roles_permissions ON users.id = user_roles_permissions.user_id
+LEFT JOIN permissions ON permissions.id = user_roles_permissions.permission_id
+
+
+Aštuntas:
+
